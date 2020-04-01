@@ -13,7 +13,7 @@ while true; do
   ethPrice=$(echo ${body} | jq '.ethereum.usd')
   bidPrice=$(bc -l <<< "${ethPrice} * (1-${FLIP_ETH_DISCOUNT})")
 
-  echo "{\"price\": \"${bidPrice}\", \"gasPrice\": \"${FIX_GAS_PRICE}\"}"
+  echo "{\"price\": \"${bidPrice}\", \"gasPrice\": \"$(dynamic_gas)\"}"
 
   sleep 25
 done
